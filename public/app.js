@@ -4,6 +4,8 @@
     videos: [],
     activeCategory: "All",
     searchText: "",
+    shuffledCategories: [],
+    shuffledAllVideos: [],
     currentVideo: null,
     sheetOpen: false,
     loaderTimer: null,
@@ -36,6 +38,17 @@
     return "https://img.youtube.com/vi/" + encodeURIComponent(video.youtubeId) + "/hqdefault.jpg";
   }
 
+  function shuffleCopy(items) {
+    var copy = items.slice();
+    for (var i = copy.length - 1; i > 0; i -= 1) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = copy[i];
+      copy[i] = copy[j];
+      copy[j] = temp;
+    }
+    return copy;
+  }
+
   function enabledVideos() {
     return state.videos.filter(function (video) {
       return video.enabled;
@@ -54,9 +67,21 @@
     return list;
   }
 
+  function shuffleAllVideos() {
+    state.shuffledAllVideos = shuffleCopy(enabledVideos());
+  }
+
+  function setActiveCategory(category) {
+    state.activeCategory = category;
+    if (category === "All") shuffleAllVideos();
+    updateTabState();
+    renderGrid();
+  }
+
   function filteredVideos() {
     var query = state.searchText.toLowerCase();
-    return enabledVideos().filter(function (video) {
+    var source = state.activeCategory === "All" ? state.shuffledAllVideos : enabledVideos();
+    return source.filter(function (video) {
       var inCategory = state.activeCategory === "All" || video.category === state.activeCategory;
       var inSearch = !query || video.title.toLowerCase().indexOf(query) !== -1 || video.category.toLowerCase().indexOf(query) !== -1;
       return inCategory && inSearch;
@@ -100,15 +125,13 @@
   function renderTabs() {
     var tabs = $("categoryTabs");
     tabs.innerHTML = "";
-    categories().forEach(function (category) {
+    state.shuffledCategories.forEach(function (category) {
       var button = document.createElement("button");
       button.type = "button";
       button.className = "tab" + (category === state.activeCategory ? " active" : "");
       button.appendChild(document.createTextNode(category));
       button.onclick = function () {
-        state.activeCategory = category;
-        updateTabState();
-        renderGrid();
+        setActiveCategory(category);
       };
       tabs.appendChild(button);
     });
@@ -135,7 +158,7 @@
   function renderRelated() {
     var list = $("relatedList");
     list.innerHTML = "";
-    enabledVideos().forEach(function (video) {
+    shuffleCopy(enabledVideos()).forEach(function (video) {
       if (!state.currentVideo || video.id !== state.currentVideo.id) {
         list.appendChild(makeVideoButton(video, true));
       }
@@ -147,6 +170,10 @@
     $("childName").appendChild(document.createTextNode(state.settings.childName || "Nitzan"));
     $("childInitial").innerHTML = "";
     $("childInitial").appendChild(document.createTextNode((state.settings.childName || "Nitzan").charAt(0).toUpperCase()));
+    state.shuffledCategories = ["All"].concat(shuffleCopy(categories().filter(function (category) {
+      return category !== "All";
+    })));
+    shuffleAllVideos();
     renderTabs();
     renderGrid();
   }
@@ -291,6 +318,10 @@
 
   function init() {
     $("backButton").onclick = closePlayer;
+    $("profileBadge").onclick = function (event) {
+      if (event.preventDefault) event.preventDefault();
+      setActiveCategory("All");
+    };
     $("searchButton").onclick = function () {
       if ($("searchPanel").className.indexOf("hidden") !== -1) {
         $("searchPanel").className = "search-panel";
