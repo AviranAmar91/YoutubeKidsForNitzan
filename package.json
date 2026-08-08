@@ -5,7 +5,11 @@
   "description": "A small iPad-friendly kids video app with a parent control panel.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.86.0"
   },
   "engines": {
     "node": ">=16"
