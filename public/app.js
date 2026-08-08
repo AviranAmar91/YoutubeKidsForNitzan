@@ -107,10 +107,19 @@
       button.appendChild(document.createTextNode(category));
       button.onclick = function () {
         state.activeCategory = category;
-        render();
+        updateTabState();
+        renderGrid();
       };
       tabs.appendChild(button);
     });
+  }
+
+  function updateTabState() {
+    var tabs = $("categoryTabs").getElementsByTagName("button");
+    for (var i = 0; i < tabs.length; i += 1) {
+      var label = tabs[i].textContent || tabs[i].innerText;
+      tabs[i].className = "tab" + (label === state.activeCategory ? " active" : "");
+    }
   }
 
   function renderGrid() {
