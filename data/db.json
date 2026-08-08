@@ -7,9 +7,133 @@
   },
   "videos": [
     {
+      "id": "330a392c-7997-4858-8229-0216b478f370",
+      "title": "Toddler Learning at Indoor Playground | Learn First Words with Pretend Play | Fun Videos for Kids",
+      "sourceType": "youtube",
+      "youtubeId": "G_dr0unojms",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Paisley's Corner",
+      "enabled": true,
+      "createdAt": "2026-08-08T16:10:40.142Z"
+    },
+    {
+      "id": "5a2c29c1-6260-4314-a193-4d673baa8154",
+      "title": "Learn the Letter B w/ Silly Miss Lily | ABCS, Phonics, Learn to Read & Write for Kids | Kids Videos",
+      "sourceType": "youtube",
+      "youtubeId": "eStPsZ_clk4",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Paisley's Corner",
+      "enabled": true,
+      "createdAt": "2026-08-08T16:08:26.739Z"
+    },
+    {
+      "id": "abd53e0c-ad34-49dc-bb40-603c46d3bd52",
+      "title": "Learning for Toddlers | Count Fireworks, Learn Colors with Finger-painting Activity | Ms Alyssa",
+      "sourceType": "youtube",
+      "youtubeId": "d5qFiRcBR5I",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Baby Bandstand & Ms. Alyssa",
+      "enabled": true,
+      "createdAt": "2026-08-08T16:05:41.123Z"
+    },
+    {
+      "id": "d5eae37c-73c9-48c2-aacd-434a137faeae",
+      "title": "Happy Birthday Sing-Along + More - Learn and Sing with Ms. Alyssa",
+      "sourceType": "youtube",
+      "youtubeId": "k0edoB4psvs",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Baby Bandstand & Ms. Alyssa",
+      "enabled": true,
+      "createdAt": "2026-08-08T16:03:24.433Z"
+    },
+    {
+      "id": "ad2cf24a-576b-46c5-89fd-80b0310a2de7",
+      "title": "🚗💺 Buckle Up! | Car Seat Safety for Babies & Toddlers | Baby Bandstand & Ms. Alyssa 💺🚗",
+      "sourceType": "youtube",
+      "youtubeId": "Un7EzCRSLlc",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Baby Bandstand & Ms. Alyssa",
+      "enabled": true,
+      "createdAt": "2026-08-08T15:56:05.359Z"
+    },
+    {
+      "id": "709de8dc-9ecb-46c9-926e-85b65d06ea12",
+      "title": "Best of Blippi, Meekah, and MS. RACHEL | Learning for Kids | Blippi and Meekah Kids TV",
+      "sourceType": "youtube",
+      "youtubeId": "eO4Pgn7SLUc",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Ms Rachel",
+      "enabled": true,
+      "createdAt": "2026-08-08T15:54:40.461Z"
+    },
+    {
+      "id": "e6329869-19bf-4fd9-9e86-030c6fe759a0",
+      "title": "Blippi Visits Fidgets Indoor Play Place | 1 HOUR of Blippi Educational Videos For Kids | Blippi Toys",
+      "sourceType": "youtube",
+      "youtubeId": "0JgzM99db8k",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Blippi",
+      "enabled": true,
+      "createdAt": "2026-08-08T15:53:32.965Z"
+    },
+    {
+      "id": "c4a9247d-e1e7-48ea-be91-aa57dd6b05b8",
+      "title": "Baby Learning With Ms Rachel - First Words, Songs and Nursery Rhymes for Babies - Toddler Videos",
+      "sourceType": "youtube",
+      "youtubeId": "hTqtGJwsJVE",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Ms Rachel",
+      "enabled": true,
+      "createdAt": "2026-08-08T15:52:03.741Z"
+    },
+    {
+      "id": "e4464b66-072f-4e0a-9188-f1086a766743",
+      "title": "Blippi Learns Colors At The Indoor Play Place! | Educational Videos for Kids",
+      "sourceType": "youtube",
+      "youtubeId": "T9wMikE-0o0",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Blippi",
+      "enabled": true,
+      "createdAt": "2026-08-08T15:51:26.319Z"
+    },
+    {
+      "id": "4d33ba26-5d1b-42d4-af21-1fe1e41c2ea7",
+      "title": "Learning about Animals at the Playground! 🦓🐴 Blippi Mini Golf Fun",
+      "sourceType": "youtube",
+      "youtubeId": "7a-YYiaLUfk",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Blippi",
+      "enabled": true,
+      "createdAt": "2026-08-08T15:50:07.887Z"
+    },
+    {
+      "id": "f242f24a-8270-42bd-8766-08e2db783c63",
+      "title": "Toddler Learning with Ms Rachel - Nursery Rhymes & Kids Songs - Baby Video - Milestones & Speech",
+      "sourceType": "youtube",
+      "youtubeId": "F0VdRhX-PyI",
+      "videoUrl": "",
+      "thumbnailUrl": "",
+      "category": "Ms Rachel",
+      "enabled": true,
+      "createdAt": "2026-08-08T15:42:52.344Z"
+    },
+    {
       "id": "seed-elmo",
       "title": "Sesame Street: Elmo Songs",
+      "sourceType": "youtube",
       "youtubeId": "v1zL106SGZ8",
+      "videoUrl": "",
+      "thumbnailUrl": "",
       "category": "Songs",
       "enabled": true,
       "createdAt": "2026-08-08T00:00:00.000Z"
@@ -17,7 +141,10 @@
     {
       "id": "seed-twinkle",
       "title": "Super Simple Songs: Twinkle Twinkle",
+      "sourceType": "youtube",
       "youtubeId": "yCjJyiqpAuU",
+      "videoUrl": "",
+      "thumbnailUrl": "",
       "category": "Songs",
       "enabled": true,
       "createdAt": "2026-08-08T00:00:00.000Z"
@@ -25,7 +152,10 @@
     {
       "id": "seed-numberblocks",
       "title": "Numberblocks: Learn Numbers",
+      "sourceType": "youtube",
       "youtubeId": "0VLxWIHRD4E",
+      "videoUrl": "",
+      "thumbnailUrl": "",
       "category": "Learning",
       "enabled": true,
       "createdAt": "2026-08-08T00:00:00.000Z"

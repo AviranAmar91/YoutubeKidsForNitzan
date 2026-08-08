@@ -62,7 +62,7 @@ a {
   text-decoration: none;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 42px;
   font-weight: 800;
 }
@@ -370,8 +370,16 @@ button {
   margin: 0 auto 14px;
   display: flex;
   overflow-x: auto;
+  overflow-y: hidden;
   padding-bottom: 6px;
   justify-content: center;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
@@ -622,6 +630,35 @@ button {
   pointer-events: none;
 }
 
+.loader-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  margin-bottom: 12px;
+}
+
+.loader-dots span {
+  display: block;
+  width: 18px;
+  height: 18px;
+  margin: 0 8px;
+  border-radius: 50%;
+  background: #91ecf3;
+  border: 3px solid #fff;
+  animation: loader-dot 700ms ease-in-out infinite;
+}
+
+.loader-dots span:nth-child(2) {
+  background: #f55cbd;
+  animation-delay: 120ms;
+}
+
+.loader-dots span:nth-child(3) {
+  background: #ffcf3f;
+  animation-delay: 240ms;
+}
+
 .loader-face {
   position: relative;
   width: 86px;
@@ -676,6 +713,17 @@ button {
 
   50% {
     transform: translateY(-12px);
+  }
+}
+
+@keyframes loader-dot {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
   }
 }
 
