@@ -9,6 +9,9 @@
     currentVideo: null,
     sheetOpen: false,
     loaderTimer: null,
+    youtubeLoadTimer: null,
+    youtubeLoadToken: 0,
+    youtubeFrameLoaded: false,
     seeking: false,
     wasPlayingBeforeSeek: false
   };
@@ -192,6 +195,39 @@
     $("videoLoader").className = "video-loader hidden";
   }
 
+  function youtubeEmbedUrl(video, autoplay, retry) {
+    var url = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(video.youtubeId) + "?rel=0&modestbranding=1&playsinline=1&autoplay=" + autoplay + "&vq=medium";
+    if (retry) url += "&reload=" + encodeURIComponent(String(retry));
+    return url;
+  }
+
+  function clearYoutubeLoadRetry() {
+    if (state.youtubeLoadTimer) {
+      clearTimeout(state.youtubeLoadTimer);
+      state.youtubeLoadTimer = null;
+    }
+  }
+
+  function markYoutubeFrameLoaded() {
+    if (!state.currentVideo || state.currentVideo.sourceType === "mp4") return;
+    state.youtubeFrameLoaded = true;
+    clearYoutubeLoadRetry();
+    hideLoader();
+  }
+
+  function watchYoutubeFrameLoad(video, autoplay) {
+    var token = state.youtubeLoadToken;
+    clearYoutubeLoadRetry();
+    state.youtubeFrameLoaded = false;
+    state.youtubeLoadTimer = setTimeout(function () {
+      if (token !== state.youtubeLoadToken) return;
+      if (!state.currentVideo || state.currentVideo.id !== video.id) return;
+      if (state.youtubeFrameLoaded) return;
+      showLoader();
+      $("player").src = youtubeEmbedUrl(video, autoplay, Date.now());
+    }, 5000);
+  }
+
   function tryPlayMp4() {
     var video = $("mp4Player");
     var playPromise = video.play();
@@ -228,12 +264,14 @@
     })[0];
     if (!found) return;
     state.currentVideo = found;
+    state.youtubeLoadToken += 1;
+    clearYoutubeLoadRetry();
+    state.youtubeFrameLoaded = false;
     $("homeView").className = "hidden";
     $("watchView").className = "watch-view";
     $("watchTitle").innerHTML = "";
     $("watchTitle").appendChild(document.createTextNode(found.title));
     var shouldAutoplay = state.settings.autoplay !== false;
-    $("player").src = "about:blank";
     $("player").className = "hidden";
     $("mp4Player").pause();
     $("mp4Player").removeAttribute("src");
@@ -242,6 +280,7 @@
     $("mp4Player").className = "hidden";
     showMp4Controls(false);
     if (found.sourceType === "mp4") {
+      $("player").src = "about:blank";
       $("mp4Player").src = "/api/stream/" + encodeURIComponent(found.id);
       $("mp4Player").className = "";
       showMp4Controls(true);
@@ -251,8 +290,9 @@
     } else {
       showLoader();
       var autoplay = shouldAutoplay ? "1" : "0";
-      $("player").src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(found.youtubeId) + "?rel=0&modestbranding=1&playsinline=1&autoplay=" + autoplay + "&vq=medium";
+      $("player").src = youtubeEmbedUrl(found, autoplay, 0);
       $("player").className = "";
+      watchYoutubeFrameLoad(found, autoplay);
     }
     state.sheetOpen = false;
     updateSheet();
@@ -261,6 +301,10 @@
 
   function closePlayer() {
     hideLoader();
+    state.youtubeLoadToken += 1;
+    clearYoutubeLoadRetry();
+    state.youtubeFrameLoaded = false;
+    state.currentVideo = null;
     $("player").src = "about:blank";
     $("mp4Player").pause();
     $("mp4Player").removeAttribute("src");
@@ -268,7 +312,6 @@
     showMp4Controls(false);
     $("watchView").className = "watch-view hidden";
     $("homeView").className = "";
-    state.currentVideo = null;
   }
 
   function updateSheet() {
@@ -371,7 +414,7 @@
       if (state.wasPlayingBeforeSeek) tryPlayMp4();
       updateSeekUi();
     }, false);
-    $("player").onload = hideLoader;
+    $("player").onload = markYoutubeFrameLoaded;
     $("mp4Player").addEventListener("canplay", function () {
       hideLoader();
       if ($("mp4Player").autoplay) tryPlayMp4();
