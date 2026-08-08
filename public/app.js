@@ -215,7 +215,7 @@
     } else {
       showLoader();
       var autoplay = shouldAutoplay ? "1" : "0";
-      $("player").src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(found.youtubeId) + "?rel=0&modestbranding=1&playsinline=1&autoplay=" + autoplay + "&vq=large";
+      $("player").src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(found.youtubeId) + "?rel=0&modestbranding=1&playsinline=1&autoplay=" + autoplay + "&vq=medium";
       $("player").className = "";
     }
     state.sheetOpen = false;
