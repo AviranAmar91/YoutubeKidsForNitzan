@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Nitzan">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/apple-touch-icon.png">
+  <title>Nitzan Videos</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="child-app">
+  <main id="app" class="screen home-screen">
+    <header class="topbar kids-topbar">
+      <a class="profile-badge" href="/parent.html" aria-label="Parent panel">
+        <span id="childInitial">N</span>
+      </a>
+      <div class="kids-icons" aria-hidden="true">
+        <span class="icon-clock">9</span>
+        <span class="icon-heart"></span>
+        <span class="icon-popcorn"></span>
+        <span class="icon-music"></span>
+        <span class="icon-bulb"></span>
+      </div>
+      <button id="searchButton" class="search-button" type="button" aria-label="Search"></button>
+      <div class="kids-hills" aria-hidden="true"></div>
+      <div class="kids-title">
+        <p class="eyebrow">For</p>
+        <h1 id="childName">Nitzan</h1>
+      </div>
+    </header>
+
+    <section id="homeView" class="shows-area">
+      <div id="searchPanel" class="search-panel hidden">
+        <input id="searchInput" type="search" placeholder="Search videos" aria-label="Search videos">
+        <button id="clearSearchButton" type="button">Clear</button>
+      </div>
+      <nav id="categoryTabs" class="tabs" aria-label="Video categories"></nav>
+      <div id="videoGrid" class="video-grid"></div>
+      <p id="emptyState" class="empty hidden">No videos yet.</p>
+    </section>
+
+    <section id="watchView" class="watch-view hidden" aria-live="polite">
+      <div class="watch-bar">
+        <button id="backButton" class="icon-button" type="button" aria-label="Back">&lt;</button>
+        <h2 id="watchTitle"></h2>
+      </div>
+      <div class="player-shell">
+        <iframe id="player" title="Video player" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        <video id="mp4Player" class="hidden" controls playsinline webkit-playsinline></video>
+        <div id="mp4Controls" class="mp4-controls hidden">
+          <button id="playPauseButton" class="play-pause-button" type="button" aria-label="Play or pause">Pause</button>
+          <span id="currentTimeLabel" class="time-label">0:00</span>
+          <input id="seekSlider" class="seek-slider" type="range" min="0" max="1000" value="0" aria-label="Video position">
+          <span id="durationLabel" class="time-label">0:00</span>
+        </div>
+        <div id="videoLoader" class="video-loader hidden" aria-live="polite">
+          <div class="loader-face">
+            <span></span>
+          </div>
+          <p>Loading</p>
+        </div>
+      </div>
+      <div id="relatedSheet" class="related-sheet">
+        <button id="sheetHandle" class="sheet-handle" type="button" aria-label="Related videos">
+          <span></span>
+          <strong>More videos</strong>
+        </button>
+        <div id="relatedList" class="related-list"></div>
+      </div>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

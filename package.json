@@ -1,0 +1,13 @@
+{
+  "name": "nitzan-kids-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A small iPad-friendly kids video app with a parent control panel.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}

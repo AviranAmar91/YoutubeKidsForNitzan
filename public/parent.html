@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-title" content="Nitzan">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/apple-touch-icon.png">
+  <title>Parent Panel</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="parent-app">
+  <main class="parent-layout">
+    <header class="parent-header">
+      <div>
+        <p class="eyebrow">Parent Panel</p>
+        <h1>Choose Videos</h1>
+      </div>
+      <a class="child-link" href="/">Open child app</a>
+    </header>
+
+    <section id="pinGate" class="panel">
+      <h2>Parent PIN</h2>
+      <form id="pinForm" class="row-form">
+        <input id="pinInput" inputmode="numeric" autocomplete="off" placeholder="1234" aria-label="PIN">
+        <button type="submit">Unlock</button>
+      </form>
+      <p id="pinError" class="error hidden">Wrong PIN.</p>
+    </section>
+
+    <section id="adminPanel" class="hidden">
+      <section class="panel">
+        <h2>Add a Video</h2>
+        <form id="videoForm" class="video-form">
+          <input id="titleInput" placeholder="Video title" required>
+          <select id="sourceTypeInput" aria-label="Video source type">
+            <option value="youtube">YouTube embed</option>
+            <option value="mp4">Local/direct MP4</option>
+          </select>
+          <input id="urlInput" placeholder="YouTube link, /videos/file.mp4, or direct MP4 URL" required>
+          <input id="thumbnailInput" placeholder="Optional thumbnail URL for MP4">
+          <input id="categoryInput" placeholder="Category, e.g. Songs">
+          <label class="check-row">
+            <input id="enabledInput" type="checkbox" checked>
+            Show to Nitzan
+          </label>
+          <button id="saveVideoButton" type="submit">Add video</button>
+          <button id="cancelEditButton" class="secondary hidden" type="button">Cancel edit</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Settings</h2>
+        <form id="settingsForm" class="video-form">
+          <input id="childNameInput" placeholder="Child name">
+          <input id="parentPinInput" inputmode="numeric" placeholder="Parent PIN">
+          <label class="check-row">
+            <input id="autoplayInput" type="checkbox">
+            Start videos automatically
+          </label>
+          <button type="submit">Save settings</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Approved Videos</h2>
+        <div id="adminList" class="admin-list"></div>
+      </section>
+    </section>
+  </main>
+  <script src="/parent.js"></script>
+</body>
+</html>
